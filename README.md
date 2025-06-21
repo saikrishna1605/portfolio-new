@@ -1,30 +1,30 @@
 # 🚀 Saikrishna's Portfolio
 
-Welcome to my personal developer portfolio — a dynamic, responsive, and modern showcase of my work, skills, and projects.
+A modern, animated, and responsive developer portfolio built using **Next.js** and deployed on **Vercel**.
 
-🌐 **Live Site**: [saikrishna-m](https://tinyurl.com/saikrishna-m)
-
----
-
-## 🔧 Built With
-
-- **React** (Frontend Framework)
-- **Tailwind CSS** (Styling & Responsiveness)
-- **Framer Motion** (Animations)
-- **Firebase Hosting** (Deployment)
+🔗 **Live Demo**: [tinyurl.com/saikrishna-m](https://tinyurl.com/saikrishna-m)
 
 ---
 
-## 🎯 Features
+## 🛠️ Built With
 
-- Interactive and animated UI
-- Mobile-friendly layout
-- Smooth navigation and transitions
-- Showcases projects, skills, and contact info
+- **Next.js** – React framework with SSR and routing
+- **Tailwind CSS** – Utility-first responsive design
+- **Framer Motion** – Smooth animations
+- **Vercel** – Seamless CI/CD and hosting
 
 ---
 
-## 📁 Usage
+## ✨ Features
+
+- Fully responsive across all devices
+- Fast performance with static optimization
+- Animated sections and clean transitions
+- Showcases projects, skills, and contact links
+
+---
+
+## 🧑‍💻 Local Development
 
 To run locally:
 
@@ -32,4 +32,4 @@ To run locally:
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
 npm install
-npm start
+npm run dev
