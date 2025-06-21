@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 220 29% 95%; /* #f0f2f5 */
+    --foreground: 240 10% 3.9%;
+    --card: 220 29% 95%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 220 29% 95%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 50% 38%; /* #303090 */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 275 100% 25%; /* #4B0082 */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 50% 38%; /* Adjusted to primary */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 220 15% 10%; /* Dark background */
+    --foreground: 0 0% 98%;
+    --card: 220 15% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 240 50% 68%; /* Lighter primary for dark mode */
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 275 80% 60%; /* Lighter accent for dark mode */
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 50% 68%; /* Adjusted to primary for dark mode */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+  }
+  section {
+    @apply py-16 md:py-24;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .interactive-glow-card {
+    position: relative;
+    overflow: hidden; /* Important to clip the effect to card bounds */
+  }
+
+  .interactive-glow-card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(
+      circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+      hsl(var(--primary) / 0.25) 0%, /* Primary color glow */
+      hsl(var(--accent) / 0.2) 20%,  /* Accent color mixed in */
+      transparent 40% /* Fade out to transparent */
+    );
+    border-radius: inherit; /* Use the card's border-radius */
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none; /* Allow interaction with card content */
+    z-index: 0; /* Position behind card content but over card background */
+  }
+
+  .group:hover .interactive-glow-card::after {
+    opacity: 1;
+  }
+
+  /* Ensure card content is visually above the effect */
+  .interactive-glow-card > * {
+    position: relative; 
+    z-index: 1; /* Make sure content is above the z-index:0 pseudo-element */
+  }
+}
