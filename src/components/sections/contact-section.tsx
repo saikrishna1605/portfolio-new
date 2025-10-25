@@ -59,7 +59,7 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-headline text-xl font-semibold text-foreground">Phone</h4>
                     <p className="text-muted-foreground text-base" aria-label="Phone number">
-                      (+91) 83286-87217
+                      
                     </p>
                   </div>
                 </motion.div>
@@ -75,9 +75,8 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-headline text-xl font-semibold text-foreground">Address</h4>
                     <p className="text-muted-foreground text-base" aria-label="Address">
-                      1-63/3/5/2/A/1, Brundavan Colony, <br />
-                      Huzurnagar 508204, Telangana, <br />
-                      India
+                      Hyderabad, India
+                          
                     </p>
                   </div>
                 </motion.div>

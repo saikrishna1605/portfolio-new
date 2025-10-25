@@ -30,6 +30,10 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  // Optimize for Vercel deployment
+  poweredByHeader: false,
+  compress: true,
+  reactStrictMode: true,
 };
 
 export default nextConfig;

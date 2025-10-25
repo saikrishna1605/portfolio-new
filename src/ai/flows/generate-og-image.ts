@@ -92,6 +92,10 @@ const generateOgImageFlow = ai.defineFlow(
       },
     });
 
-    return {ogImageUrl: media.url!};
+    if (!media || !media.url) {
+      throw new Error('Failed to generate OG image - no media or URL returned');
+    }
+
+    return {ogImageUrl: media.url};
   }
 );

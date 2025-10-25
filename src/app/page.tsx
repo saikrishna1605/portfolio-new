@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: siteTitle,
       description: siteDescription,
-      url: "https://yourdomain.com", // Replace with your actual domain
+      url: process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-new-saikrishna1605s-projects.vercel.app",
       siteName: siteTitle,
       type: 'website',
       locale: 'en_US',
