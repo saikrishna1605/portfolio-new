@@ -11,8 +11,8 @@ export function ResumeSection() {
   const [mounted, setMounted] = useState(false);
   const { toast } = useToast();
   // Use direct download link for resume
-  const resumeUrl = "https://drive.google.com/uc?export=download&id=1xGbkJ3_msejKZ-1i8KXquMPOyP0SoJsL";
-  const resumeViewUrl = "https://drive.google.com/file/d/1xGbkJ3_msejKZ-1i8KXquMPOyP0SoJsL/preview";
+  const resumeUrl = "https://drive.google.com/uc?export=download&id=1I4dJGeGENshqcFEjwqtmQe-nzaVfSkBS";
+  const resumeViewUrl = "https://drive.google.com/file/d/1I4dJGeGENshqcFEjwqtmQe-nzaVfSkBS/preview";
 
 
   useEffect(() => {

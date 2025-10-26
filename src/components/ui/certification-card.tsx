@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useRef, type MouseEvent } from "react";
 import { ImageModal } from "@/components/ui/image-modal";
+import { MagicCardWrapper } from "@/components/ui/magic-card-wrapper";
 
 interface CertificationCardProps {
   certification: Certification;
@@ -51,12 +52,24 @@ export function CertificationCard({ certification, index }: CertificationCardPro
         viewport={{ once: true, amount: 0.2 }} 
         className="group h-full" 
       >
-        <Card 
-          ref={cardRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 interactive-glow-card"
+        <MagicCardWrapper
+          enableStars={true}
+          enableSpotlight={true}
+          enableBorderGlow={true}
+          enableTilt={true}
+          enableMagnetism={true}
+          clickEffect={true}
+          spotlightRadius={300}
+          particleCount={12}
+          glowColor="132, 0, 255"
+          className="h-full"
         >
+          <Card 
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 interactive-glow-card"
+          >
           <CardHeader>
             <div 
               className="aspect-[16/10] relative overflow-hidden rounded-t-lg mb-4 cursor-pointer" 
@@ -109,6 +122,7 @@ export function CertificationCard({ certification, index }: CertificationCardPro
             </Button>
           </CardFooter>
         </Card>
+        </MagicCardWrapper>
       </motion.div>
       <ImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} imageUrl={certification.imageUrl} altText={certification.title} />
     </>

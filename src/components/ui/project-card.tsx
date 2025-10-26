@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState, useRef, type MouseEvent } from "react";
 import { ImageModal } from "@/components/ui/image-modal";
+import ElectricBorder from "@/components/ui/electric-border";
+import { MagicCardWrapper } from "./magic-card-wrapper";
 
 interface ProjectCardProps {
   project: Project;
@@ -51,15 +53,22 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         viewport={{ once: true, amount: 0.2 }} 
         className="group h-full"
       >
-        <Card 
-          ref={cardRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 interactive-glow-card"
+        <ElectricBorder
+          color="#7df9ff"
+          speed={1}
+          chaos={0.5}
+          thickness={2}
+          style={{ borderRadius: 16, height: '100%' }}
         >
-          <CardHeader>
+          <Card 
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 interactive-glow-card"
+          >
+          <CardHeader className="p-4">
             <div 
-              className="aspect-video relative overflow-hidden rounded-t-lg mb-4 cursor-pointer"
+              className="aspect-video relative overflow-hidden rounded-lg mb-3 cursor-pointer"
               onClick={() => setIsModalOpen(true)}
               role="button"
               tabIndex={0}
@@ -75,28 +84,28 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 data-ai-hint={project.imageHint}
               />
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Eye className="h-12 w-12 text-white" />
+                <Eye className="h-10 w-10 text-white" />
               </div>
             </div>
-            <CardTitle className="font-headline text-2xl">{project.title}</CardTitle>
-            <CardDescription>{project.description}</CardDescription>
+            <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
+            <CardDescription className="text-sm">{project.description}</CardDescription>
           </CardHeader>
-          <CardContent className="flex-grow">
+          <CardContent className="flex-grow p-4 pt-0">
             {project.longDescription && (
-             <p className="text-sm text-muted-foreground mb-4">{project.longDescription}</p>
+             <p className="text-xs text-muted-foreground mb-3 line-clamp-3">{project.longDescription}</p>
             )}
-            <div className="mb-4">
-              <h4 className="text-sm font-semibold mb-2 text-muted-foreground">Technologies Used:</h4>
-              <div className="flex flex-wrap gap-2">
+            <div className="mb-3">
+              <h4 className="text-xs font-semibold mb-2 text-muted-foreground">Technologies Used:</h4>
+              <div className="flex flex-wrap gap-1.5">
                 {project.technologies.map((tech) => (
-                  <Badge key={tech} variant="secondary" className="font-code">
+                  <Badge key={tech} variant="secondary" className="font-code text-xs">
                     {tech}
                   </Badge>
                 ))}
               </div>
             </div>
           </CardContent>
-          <CardFooter className="flex flex-wrap justify-start gap-2">
+          <CardFooter className="flex flex-wrap justify-start gap-2 p-4 pt-0">
             {project.liveUrl && (
               <Button asChild variant="default" size="sm" className="hover:shadow-primary/40 transition-all duration-300 ease-in-out transform hover:scale-105">
                 <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -116,6 +125,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
              </Button>
           </CardFooter>
         </Card>
+        </ElectricBorder>
       </motion.div>
       <ImageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} imageUrl={project.imageUrl} altText={project.title} />
     </>

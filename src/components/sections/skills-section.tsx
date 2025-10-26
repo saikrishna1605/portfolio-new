@@ -9,6 +9,7 @@ import { useState } from "react";
 import { ImageModal } from "@/components/ui/image-modal";
 import { Button } from "../ui/button";
 import { Eye } from "lucide-react";
+import { MagicCardWrapper } from "@/components/ui/magic-card-wrapper";
 
 export function SkillsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,7 +50,19 @@ export function SkillsSection() {
             className="flex justify-center" // Center the single card
           >
             <motion.div variants={itemVariants} className="w-full max-w-lg"> {/* Constrain width of the card container */}
-              <Card className="shadow-md hover:shadow-lg transition-shadow group">
+              <MagicCardWrapper
+                enableStars={true}
+                enableSpotlight={true}
+                enableBorderGlow={true}
+                enableTilt={true}
+                enableMagnetism={true}
+                clickEffect={true}
+                spotlightRadius={300}
+                particleCount={12}
+                glowColor="132, 0, 255"
+                className="h-full"
+              >
+                <Card className="shadow-md hover:shadow-lg transition-shadow group">
                 <CardHeader>
                   <CardTitle className="font-headline text-xl text-primary text-center">My Development Toolkit</CardTitle>
                 </CardHeader>
@@ -79,6 +92,7 @@ export function SkillsSection() {
                   </Button>
                 </CardContent>
               </Card>
+              </MagicCardWrapper>
             </motion.div>
           </motion.div>
         </div>
