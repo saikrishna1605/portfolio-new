@@ -21,27 +21,12 @@ export function ResumeSection() {
 
   const handlePrint = () => {
     if (typeof window !== "undefined") {
-      const pdfFrame = document.getElementById("pdf-viewer-frame") as HTMLIFrameElement;
-      if (showPdfViewer && pdfFrame && pdfFrame.contentWindow) {
-        try {
-          pdfFrame.contentWindow.focus(); 
-          pdfFrame.contentWindow.print();
-        } catch (error) {
-          console.error("Error printing PDF from iframe:", error);
-          toast({
-            title: "Print Error",
-            description: "Could not print PDF directly. Please download and print.",
-            variant: "destructive",
-          });
-          window.open(resumeViewUrl, '_blank');
-        }
-      } else {
-        window.open(resumeViewUrl, '_blank');
-        toast({
-            title: "Printing Resume",
-            description: "Opening resume in a new tab for printing.",
-        });
-      }
+      // Always open in new tab for printing to avoid CORS issues with Google Drive iframe
+      window.open(resumeViewUrl, '_blank');
+      toast({
+        title: "Opening Resume",
+        description: "Resume opened in a new tab. You can print from there using Ctrl+P or Cmd+P.",
+      });
     }
   };
   
